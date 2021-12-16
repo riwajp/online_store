@@ -2,16 +2,25 @@ import styled from "styled-components";
 
 export const ProductsList = styled.div`
   width: 100vw;
-  height: 400px;
+  max-height: 400px;
+  color: black;
 `;
 
 export const ProductContainer = styled.div`
+  margin-top: 20px;
   height: 100%;
   padding: 10px;
+  cursor: pointer;
+  &:hover {
+    transition: 0.5s;
+
+    box-shadow: 0 4px 10px 0px gray;
+    margin-top: -5px;
+  }
 `;
 
 export const ProductImgContainer = styled.div`
-  height: 320px;
+  height: 220px;
 `;
 
 export const ProductImage = styled.img`

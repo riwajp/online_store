@@ -53,6 +53,7 @@ export const Cart = styled.div`
   border: 1px solid white;
   box-shadow: 0 4px 10px 0px gray;
   border-radius: 100%;
+  background-color: white;
 `;
 
 export const CartIcon = styled.img`

@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import Home from "./Components/Home";
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
+import ProductPage from "./Components/ProductPage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,7 +21,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
           <Nav />
-          <Home />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product" element={<ProductPage />} />
+          </Routes>
         </div>
       </ThemeProvider>
     </BrowserRouter>
