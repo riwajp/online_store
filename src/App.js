@@ -8,6 +8,7 @@ import Footer from "./Components/Footer";
 import ProductPage from "./Components/ProductPage";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const theme = {
   colors: {
