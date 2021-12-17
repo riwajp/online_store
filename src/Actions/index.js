@@ -11,3 +11,24 @@ export const categoryNav = (cat) => {
     data: cat,
   };
 };
+
+export const NotifiersAdd = (data) => {
+  return {
+    type: "ADD",
+    data: data,
+  };
+};
+
+export const CartAdd = (data) => {
+  return {
+    type: "CARTADD",
+    data: data,
+  };
+};
+
+export const CartToogle = (data) => {
+  return {
+    type: "CARTTOOGLE",
+    data: data,
+  };
+};

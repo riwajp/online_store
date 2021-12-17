@@ -75,3 +75,51 @@ export const BuyNow = styled.button`
     background-color: #059786;
   }
 `;
+
+export const InStock = styled.div`
+  height: 20px;
+  background-color: green;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 100px;
+`;
+
+export const OutofStock = styled.div`
+  height: 20px;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 130px;
+`;
+
+export const ATCdisabled = styled.div`
+  width: 95%;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #2a2929;
+  border: 1px solid #2a2929;
+  color: white;
+  margin-top: 50px;
+  cursor: not-allowed;
+`;
+
+export const BNdisabled = styled.button`
+  width: 95%;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #0cc7b2;
+  border: 1px solid #0cc7b2;
+  color: white;
+  cursor: not-allowed;
+  margin-top: 10px;
+`;

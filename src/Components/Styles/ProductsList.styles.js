@@ -4,6 +4,7 @@ export const ProductsList = styled.div`
   width: 100vw;
   padding-left: 10px;
   color: black;
+  z-index: -1;
 `;
 
 export const ProductContainer = styled.div`
@@ -11,12 +12,13 @@ export const ProductContainer = styled.div`
 
   padding: 10px;
   cursor: pointer;
+  z-index: -1;
 
   &:hover {
     transition: 0.5s;
 
-    box-shadow: 0 4px 10px 0px gray;
-    margin-top: 20px;
+    box-shadow: 0 2px 4px 0px gray;
+    margin-top: 30px;
   }
 `;
 

@@ -8,27 +8,68 @@ import {
   Description,
   AddToCart,
   BuyNow,
+  InStock,
+  OutofStock,
+  ATCdisabled,
+  BNdisabled,
 } from "./Styles/ProductPage.styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { HL } from "./Styles/Home.styles";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router";
+import { NotifiersAdd } from "../Actions";
+import { CartAdd } from "../Actions";
 
 const ProductPage = () => {
+  const dispatch = useDispatch();
+  const id = useParams().id;
+  console.log(id);
+  const all_products = useSelector((state) => state.productsFetch);
+  const cart = useSelector((state) => state.CartItems);
+  var product = all_products.data.product.filter(
+    (item) => item.id === parseInt(id)
+  );
+  product = product[0];
+  console.log(product);
+  var notifications = useSelector((state) => state.Notifiers);
+
+  function add_to_cart() {
+    var notification = product.name + " added to Cart.";
+    notification = [...notifications, notification];
+
+    dispatch(NotifiersAdd(notification));
+    var cart_new = [...cart, product];
+    dispatch(CartAdd(cart_new));
+  }
+
   return (
     <ProductPageStyled>
       {" "}
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={6}>
           <Grid item xs={5}>
-            <Image src="https://itti.com.np/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/l/e/lenovo-ideapad-3-2020-price-nepal.jpg" />
+            <Image
+              src={
+                "https://electronic-ecommerce.herokuapp.com/" + product.image
+              }
+            />
           </Grid>
           <Grid item xs={6}>
             <Details>
-              <Category>Laptops</Category>
-              <Name>Lenovo Ideapad 3</Name>
+              <Category>
+                {product.category[0].toUpperCase()} /{" "}
+                {product.category[1].toUpperCase()}
+              </Category>
+              <Name>{product.name}</Name>
               <HL />
               <br />
+              {product.stock > 0 ? (
+                <InStock>In Stock</InStock>
+              ) : (
+                <OutofStock>Out of Stock</OutofStock>
+              )}
               <Description>
                 8GB DDR3 Toshiba RAM, 500GB SSD, Intel UHD Integrated Graphics,
                 15" Display
@@ -36,8 +77,19 @@ const ProductPage = () => {
               <br />
               <Price>Rs. 50,000</Price>
               <br />
-              <AddToCart>Add to Cart</AddToCart>
-              <BuyNow>Buy Now</BuyNow>
+              {product.stock > 0 ? (
+                <div>
+                  <AddToCart onClick={() => add_to_cart()}>
+                    Add to Cart
+                  </AddToCart>
+                  <BuyNow>Buy Now</BuyNow>
+                </div>
+              ) : (
+                <div>
+                  <ATCdisabled>Add to Cart</ATCdisabled>
+                  <BNdisabled>Buy Now</BNdisabled>
+                </div>
+              )}
             </Details>
           </Grid>
         </Grid>

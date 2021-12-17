@@ -49,14 +49,30 @@ export const Cart = styled.div`
   padding: 10px;
   bottom: 50px;
   right: 50px;
-
+  max-height: 30px;
   border: 1px solid white;
   box-shadow: 0 4px 10px 0px gray;
   border-radius: 100%;
   background-color: white;
+  cursor: pointer;
 `;
 
 export const CartIcon = styled.img`
   width: 30px;
   height: auto;
+`;
+
+export const CartNum = styled.div`
+  background-color: red;
+
+  min-width: 20px;
+  min-height: 17px;
+  padding-top: 5px;
+  text-align: center;
+  border-radius: 100%;
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  top: -10px;
+  right: 2px;
 `;

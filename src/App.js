@@ -10,6 +10,8 @@ import ProductPage from "./Components/ProductPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "./Actions";
+import Notifier from "./Components/Notifier";
+import Cart from "./Components/Cart";
 
 const theme = {
   colors: {
@@ -21,6 +23,7 @@ const theme = {
 function App() {
   const products = useSelector((state) => state.productsFetch);
   const dispatch = useDispatch();
+  const cartShow = useSelector((state) => state.CartShow);
 
   console.log(products);
   if (products === "") {
@@ -39,8 +42,10 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/product" element={<ProductPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
           </Routes>
+          <Notifier />
+          {cartShow === true ? <Cart /> : ""}
         </div>
       </ThemeProvider>
     </BrowserRouter>

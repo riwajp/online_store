@@ -46,39 +46,42 @@ const ProductsListDiv = (props) => {
     }
     products_render = products_selected.map((product) => (
       <Grid item xs={3}>
-        <ProductContainer>
-          <ProductImgContainer>
-            <ProductImage
-              src={
-                "https://electronic-ecommerce.herokuapp.com/" + product.image
-              }
-            />
-          </ProductImgContainer>
-          <ProductDetailsContainer>
-            <ProductCategory>
-              {product.category[0].toUpperCase()}/
-              {product.category[1].toUpperCase()}
-            </ProductCategory>
-            <br />
-            <ProductName>{product.name}</ProductName>
-            <br />
+        <Link
+          to={"/product/" + product.id}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <ProductContainer>
+            <ProductImgContainer>
+              <ProductImage
+                src={
+                  "https://electronic-ecommerce.herokuapp.com/" + product.image
+                }
+              />
+            </ProductImgContainer>
+            <ProductDetailsContainer>
+              <ProductCategory>
+                {product.category[0].toUpperCase()}/
+                {product.category[1].toUpperCase()}
+              </ProductCategory>
+              <br />
+              <ProductName>{product.name}</ProductName>
+              <br />
 
-            <ProductPrice>Rs. 50,000</ProductPrice>
-          </ProductDetailsContainer>
-        </ProductContainer>
+              <ProductPrice>Rs. 50,000</ProductPrice>
+            </ProductDetailsContainer>
+          </ProductContainer>
+        </Link>
       </Grid>
     ));
   }
   return (
-    <Link to="/product" style={{ textDecoration: "none" }}>
-      <ProductsList>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={4}>
-            {products_render}
-          </Grid>
-        </Box>
-      </ProductsList>
-    </Link>
+    <ProductsList>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={4}>
+          {products_render}
+        </Grid>
+      </Box>
+    </ProductsList>
   );
 };
 
