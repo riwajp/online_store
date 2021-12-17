@@ -1,7 +1,7 @@
-const productsFetch = (state = "00000", action) => {
+const productsFetch = (state = "", action) => {
   switch (action.type) {
     case "FETCH":
-      return state + action.data;
+      return action.data;
     default:
       return state;
   }

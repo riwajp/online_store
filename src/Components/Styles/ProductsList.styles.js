@@ -2,25 +2,26 @@ import styled from "styled-components";
 
 export const ProductsList = styled.div`
   width: 100vw;
-  max-height: 400px;
+  padding-left: 10px;
   color: black;
 `;
 
 export const ProductContainer = styled.div`
-  margin-top: 20px;
-  height: 100%;
+  margin-top: 50px;
+
   padding: 10px;
   cursor: pointer;
+
   &:hover {
     transition: 0.5s;
 
     box-shadow: 0 4px 10px 0px gray;
-    margin-top: -5px;
+    margin-top: 20px;
   }
 `;
 
 export const ProductImgContainer = styled.div`
-  height: 220px;
+  height: 200px;
 `;
 
 export const ProductImage = styled.img`
@@ -37,7 +38,7 @@ export const ProductName = styled.span`
 `;
 
 export const ProductCategory = styled.span`
-  font-size: 14px;
+  font-size: 12px;
   color: grey;
   font-weight: 200;
 `;

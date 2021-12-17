@@ -1,7 +1,7 @@
-export const fetch = () => {
+export const fetchProducts = (data) => {
   return {
     type: "FETCH",
-    data: "ds",
+    data: data,
   };
 };
 

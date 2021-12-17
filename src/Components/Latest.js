@@ -18,7 +18,7 @@ const Latest = () => {
         </span>
       </LatestTitle>
       <HL />
-      <ProductsListDiv />
+      <ProductsListDiv type="latest" />
     </LatestStyled>
   );
 };
