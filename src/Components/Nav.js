@@ -3,11 +3,12 @@ import { Logo } from "./Styles/Nav.styles";
 
 import { Links } from "./Styles/Nav.styles";
 
-import { Link } from "./Styles/Nav.styles";
+import { LinkStyled } from "./Styles/Nav.styles";
 import { CartIcon, CartNum } from "./Styles/Nav.styles";
 import { Cart } from "./Styles/Nav.styles";
 import { useSelector, useDispatch } from "react-redux";
 import { CartToogle } from "../Actions";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const cart = useSelector((state) => state.CartItems);
@@ -15,11 +16,17 @@ const Nav = () => {
   const dispatch = useDispatch();
   return (
     <NavStyled>
-      <Logo>STORE </Logo>
+      <Logo>
+        <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+          STORE
+        </Link>
+      </Logo>
       <Links>
-        <Link>Home</Link>
-        <Link>Categories</Link>
+        <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+          <LinkStyled>Home</LinkStyled>
+        </Link>
       </Links>
+
       {cartShow === false ? (
         <Cart onClick={() => dispatch(CartToogle(true))}>
           <CartNum>{cart.length}</CartNum>

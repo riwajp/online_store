@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HomeStyled = styled.div`
   width: 100%;
-  margin-top: 70px;
+  margin-top: 65px;
 `;
 
 export const LatestStyled = styled.div`

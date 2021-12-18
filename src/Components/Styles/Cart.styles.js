@@ -4,7 +4,7 @@ export const CartContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
+  min-height: 100%;
   width: 500px;
   max-width: 100%;
   background-color: white;
@@ -72,4 +72,10 @@ export const CheckOut = styled.button`
     color: black;
     border: 1px solid lightblue;
   }
+`;
+
+export const Products = styled.div`
+  height: 500px;
+  max-height: 50vh;
+  overflow-y: scroll;
 `;

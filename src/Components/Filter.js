@@ -50,7 +50,7 @@ const Filter = () => {
         <div>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={1}>
-              <Grid item xs={1}>
+              <Grid item sm={3} md={3}>
                 <CancelBtn
                   onClick={() =>
                     dispatch(
@@ -64,11 +64,8 @@ const Filter = () => {
                   Cancel
                 </CancelBtn>
               </Grid>
-              <Grid item xs={0.5}>
-                <div style={{ fontSize: 18, marginTop: 3 }}>Price: </div>
-              </Grid>
 
-              <Grid item xs={2}>
+              <Grid item sm={3} lg={2}>
                 <Input
                   id="minPrice"
                   name="minPrice"
@@ -78,7 +75,7 @@ const Filter = () => {
                   placeholder="Minimum Price"
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item sm={3} lg={2}>
                 <Input
                   id="maxPrice"
                   name="maxPrice"

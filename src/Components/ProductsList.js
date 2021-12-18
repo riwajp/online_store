@@ -59,7 +59,7 @@ const ProductsListDiv = (props) => {
     }
 
     products_render = products_selected.map((product) => (
-      <Grid item xs={3}>
+      <Grid item lg={3} sm={4} xs={6}>
         <Link
           to={"/product/" + product.id}
           style={{ textDecoration: "none", color: "black" }}

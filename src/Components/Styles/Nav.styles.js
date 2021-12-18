@@ -31,7 +31,7 @@ export const Links = styled.div`
   display: flex;
 `;
 
-export const Link = styled.div`
+export const LinkStyled = styled.div`
   padding: 5px 10px 5px 10px;
   margin-left: 10px;
   cursor: pointer;

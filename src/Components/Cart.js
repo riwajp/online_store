@@ -9,6 +9,7 @@ import {
   Delete,
   Title,
   CheckOut,
+  Products,
 } from "./Styles/Cart.styles";
 import { useSelector, useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
@@ -16,10 +17,15 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { CartAdd } from "../Actions";
 import { Link } from "react-router-dom";
+
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartItems);
 
+  var total = 0;
+  for (var i = 0; i < cart.length; i++) {
+    total += parseInt(cart[i].price.substring(1)) * 120;
+  }
   const cart_render = cart.map((item) => (
     <Product>
       <Box sx={{ flexGrow: 1 }}>
@@ -32,7 +38,10 @@ const Cart = () => {
           <Grid item xs={8}>
             {" "}
             <Name> {item.name}</Name>
-            <Price>{item.price}</Price>
+            <Price>
+              {" "}
+              Rs. {parseInt(item.price.substring(1) * 120).toLocaleString()}
+            </Price>
           </Grid>
           <Grid item xs={2}>
             {" "}
@@ -46,16 +55,21 @@ const Cart = () => {
     </Product>
   ));
   return (
-    <CartContainer>
+    <CartContainer className="slide-in-right ">
       <Title>Cart</Title>
-      {cart_render}
+
       {cart.length > 0 ? (
-        <Total>
-          Total: <TotalPrice>$5937</TotalPrice>
-          <Link to="checkout">
-            <CheckOut>Check Out</CheckOut>
-          </Link>
-        </Total>
+        <div>
+          <Products>{cart_render}</Products>
+          <Total>
+            Total: <TotalPrice>Rs.{total.toLocaleString()}</TotalPrice>
+            <Link to="checkout">
+              <CheckOut>Check Out</CheckOut>
+            </Link>
+            <br />
+            <br />
+          </Total>
+        </div>
       ) : (
         <div style={{ textAlign: "center", marginTop: 100, fontSize: 20 }}>
           Cart is Empty

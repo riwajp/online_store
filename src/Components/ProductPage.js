@@ -75,14 +75,14 @@ const ProductPage = () => {
       {" "}
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={6}>
-          <Grid item xs={5}>
+          <Grid item md={5} sm={12}>
             <Image
               src={
                 "https://electronic-ecommerce.herokuapp.com/" + product.image
               }
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item md={6} sm={12}>
             <Details>
               <Category>
                 {product.category[0].toUpperCase()} /{" "}

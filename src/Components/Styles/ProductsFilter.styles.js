@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AllProductsContainer = styled.div`
-  margin-top: 100px;
+  margin-top: 10px;
 `;
 
 export const Categories = styled.div`
