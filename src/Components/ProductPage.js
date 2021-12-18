@@ -12,6 +12,7 @@ import {
   OutofStock,
   ATCdisabled,
   BNdisabled,
+  Date,
 } from "./Styles/ProductPage.styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -44,6 +45,31 @@ const ProductPage = () => {
     dispatch(CartAdd(cart_new));
   }
 
+  function tsToDate(ts) {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    var formatted_date = new window.Date(ts);
+    console.log(formatted_date);
+    return (
+      formatted_date.getDate() +
+      "/" +
+      months[formatted_date.getMonth()] +
+      "/" +
+      formatted_date.getFullYear()
+    );
+  }
   return (
     <ProductPageStyled>
       {" "}
@@ -70,12 +96,18 @@ const ProductPage = () => {
               ) : (
                 <OutofStock>Out of Stock</OutofStock>
               )}
+
               <Description>
+                <Date>Date Added: {tsToDate(product.createDate)}</Date>
+                <br />
                 8GB DDR3 Toshiba RAM, 500GB SSD, Intel UHD Integrated Graphics,
                 15" Display
               </Description>
               <br />
-              <Price>Rs. 50,000</Price>
+              <Price>
+                Rs.{" "}
+                {parseInt(product.price.substring(1) * 120).toLocaleString()}
+              </Price>
               <br />
               {product.stock > 0 ? (
                 <div>

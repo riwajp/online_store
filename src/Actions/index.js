@@ -32,3 +32,10 @@ export const CartToogle = (data) => {
     data: data,
   };
 };
+
+export const FilterToogle = (data) => {
+  return {
+    type: "FILTERTOOGLE",
+    data: data,
+  };
+};

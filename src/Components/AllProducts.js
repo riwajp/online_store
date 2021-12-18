@@ -7,6 +7,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { categoryNav } from "../Actions";
 import ProductsListDiv from "./ProductsList";
+import Filter from "./Filter";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const AllProducts = () => {
   ));
   return (
     <AllProductsContainer>
-      <Categories>{categories_render}</Categories>
+      <Categories>{categories_render}</Categories> <Filter />
       <br />
       <ProductsListDiv />
     </AllProductsContainer>

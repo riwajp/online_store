@@ -4,6 +4,7 @@ import productsFetch from "./productsFetch";
 import Notifiers from "./Notifiers";
 import CartItems from "./CartItems";
 import CartShow from "./CartShow";
+import FilterState from "./FilterState";
 
 const allReducers = combineReducers({
   navCategory: navCategory,
@@ -11,6 +12,7 @@ const allReducers = combineReducers({
   Notifiers: Notifiers,
   CartItems: CartItems,
   CartShow: CartShow,
+  FilterState: FilterState,
 });
 
 export default allReducers;

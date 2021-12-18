@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const ProductsListDiv = (props) => {
+  const filterState = useSelector((state) => state.FilterState);
+
   const products = useSelector((state) => state.productsFetch);
   const cat = useSelector((state) => state.navCategory);
   var products_render;
@@ -43,7 +45,19 @@ const ProductsListDiv = (props) => {
           (item) => item.category[1] === catMap[cat]
         );
       }
+      if (
+        filterState.state === true &&
+        filterState.filters.minPrice !== null &&
+        filterState.filters.maxPrice !== null
+      ) {
+        products_selected = products_selected.filter(
+          (item) =>
+            item.price.substring(1) * 120 > filterState.filters.minPrice &&
+            item.price.substring(1) * 120 < filterState.filters.maxPrice
+        );
+      }
     }
+
     products_render = products_selected.map((product) => (
       <Grid item xs={3}>
         <Link
@@ -67,7 +81,10 @@ const ProductsListDiv = (props) => {
               <ProductName>{product.name}</ProductName>
               <br />
 
-              <ProductPrice>Rs. 50,000</ProductPrice>
+              <ProductPrice>
+                Rs.{" "}
+                {parseInt(product.price.substring(1) * 120).toLocaleString()}
+              </ProductPrice>
             </ProductDetailsContainer>
           </ProductContainer>
         </Link>

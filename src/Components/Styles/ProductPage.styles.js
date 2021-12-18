@@ -123,3 +123,7 @@ export const BNdisabled = styled.button`
   cursor: not-allowed;
   margin-top: 10px;
 `;
+
+export const Date = styled.div`
+  color: grey;
+`;
