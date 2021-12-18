@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "./Actions";
 import Notifier from "./Components/Notifier";
 import Cart from "./Components/Cart";
+import CheckOut from "./Components/CheckOut";
 
 const theme = {
   colors: {
@@ -43,6 +44,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/checkout" element={<CheckOut />} />
           </Routes>
           <Notifier />
           {cartShow === true ? <Cart /> : ""}

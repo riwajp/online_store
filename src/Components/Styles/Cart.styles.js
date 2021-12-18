@@ -56,3 +56,20 @@ export const Title = styled.div`
   text-align: center;
   font-weight: 500;
 `;
+
+export const CheckOut = styled.button`
+  background-color: royalblue;
+  color: white;
+  width: 100%;
+  height: 40px;
+  margin-top: 50px;
+  border: 1px solid royalblue;
+  font-size: 18px;
+  cursor: pointer;
+  &:hover {
+    background-color: lightblue;
+    transition: 0.3s;
+    color: black;
+    border: 1px solid lightblue;
+  }
+`;

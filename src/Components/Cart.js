@@ -8,12 +8,14 @@ import {
   TotalPrice,
   Delete,
   Title,
+  CheckOut,
 } from "./Styles/Cart.styles";
 import { useSelector, useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { CartAdd } from "../Actions";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartItems);
@@ -50,6 +52,9 @@ const Cart = () => {
       {cart.length > 0 ? (
         <Total>
           Total: <TotalPrice>$5937</TotalPrice>
+          <Link to="checkout">
+            <CheckOut>Check Out</CheckOut>
+          </Link>
         </Total>
       ) : (
         <div style={{ textAlign: "center", marginTop: 100, fontSize: 20 }}>
