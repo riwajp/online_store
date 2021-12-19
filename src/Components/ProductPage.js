@@ -23,6 +23,7 @@ import { useParams } from "react-router";
 import { NotifiersAdd } from "../Actions";
 import { CartAdd } from "../Actions";
 import { CartToogle } from "../Actions";
+import { Link } from "react-router-dom";
 
 const ProductPage = () => {
   const dispatch = useDispatch();
@@ -119,7 +120,9 @@ const ProductPage = () => {
                   <AddToCart onClick={() => add_to_cart()}>
                     Add to Cart
                   </AddToCart>
-                  <BuyNow>Buy Now</BuyNow>
+                  <Link to="/checkout" style={{ textDecoration: "none" }}>
+                    <BuyNow>Buy Now</BuyNow>
+                  </Link>
                 </div>
               ) : (
                 <div>
