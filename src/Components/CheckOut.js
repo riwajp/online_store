@@ -15,8 +15,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { NotifiersAdd } from "../Actions";
 import { CartAdd } from "../Actions";
 import { useNavigate } from "react-router-dom";
+import { CartToogle } from "../Actions";
+import { useEffect } from "react";
 
 const CheckOut = () => {
+  useEffect(() => dispatch(CartToogle(false)));
   const dispatch = useDispatch();
   var notifications = useSelector((state) => state.Notifiers);
   const navigate = useNavigate();

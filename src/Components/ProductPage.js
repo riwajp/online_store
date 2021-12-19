@@ -22,6 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { NotifiersAdd } from "../Actions";
 import { CartAdd } from "../Actions";
+import { CartToogle } from "../Actions";
 
 const ProductPage = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const ProductPage = () => {
     dispatch(NotifiersAdd(notification));
     var cart_new = [...cart, product];
     dispatch(CartAdd(cart_new));
+    dispatch(CartToogle(true));
   }
 
   function tsToDate(ts) {
@@ -85,8 +87,11 @@ const ProductPage = () => {
           <Grid item md={6} sm={12}>
             <Details>
               <Category>
-                {product.category[0].toUpperCase()} /{" "}
-                {product.category[1].toUpperCase()}
+                {product.category[0].substring(0, 1).toUpperCase() +
+                  product.category[0].substring(1)}{" "}
+                /{" "}
+                {product.category[1].substring(0, 1).toUpperCase() +
+                  product.category[1].substring(1)}
               </Category>
               <Name>{product.name}</Name>
               <HL />

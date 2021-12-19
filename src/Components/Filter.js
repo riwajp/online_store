@@ -25,10 +25,19 @@ const Filter = () => {
 
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
+      var minPrice = values.minPrice;
+      var maxPrice = values.maxPrice;
+
+      if (minPrice === null || minPrice === "") {
+        minPrice = 0;
+      }
+      if (maxPrice === null || maxPrice === "") {
+        maxPrice = 99999999;
+      }
       dispatch(
         FilterToogle({
           state: filterState.state,
-          filters: { minPrice: values.minPrice, maxPrice: values.maxPrice },
+          filters: { minPrice: minPrice, maxPrice: maxPrice },
         })
       );
     },

@@ -74,8 +74,11 @@ const ProductsListDiv = (props) => {
             </ProductImgContainer>
             <ProductDetailsContainer>
               <ProductCategory>
-                {product.category[0].toUpperCase()}/
-                {product.category[1].toUpperCase()}
+                {product.category[0].substring(0, 1).toUpperCase() +
+                  product.category[0].substring(1)}{" "}
+                /{" "}
+                {product.category[1].substring(0, 1).toUpperCase() +
+                  product.category[1].substring(1)}
               </ProductCategory>
               <br />
               <ProductName>{product.name}</ProductName>
