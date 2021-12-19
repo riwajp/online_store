@@ -28,18 +28,15 @@ import { fetchProducts } from "../Actions";
 import { useEffect } from "react";
 
 const ProductPage = () => {
+  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const id = useParams().id;
   console.log(id);
   const all_products = useSelector((state) => state.productsFetch);
 
   useEffect(() => {
-    fetch("https://electronic-ecommerce.herokuapp.com/api/v1/product")
-      .then((data) => data.json())
-      .then((data) => {
-        dispatch(fetchProducts(data));
-      });
-  });
+    window.scrollTo(0, 0);
+  }, []);
   if (all_products === "") {
     fetch("https://electronic-ecommerce.herokuapp.com/api/v1/product")
       .then((data) => data.json())

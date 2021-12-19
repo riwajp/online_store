@@ -13,7 +13,6 @@ import { fetchProducts } from "./Actions";
 import Notifier from "./Components/Notifier";
 import Cart from "./Components/Cart";
 import CheckOut from "./Components/CheckOut";
-import { useEffect } from "react";
 
 const theme = {
   colors: {
@@ -28,14 +27,6 @@ function App() {
   const cartShow = useSelector((state) => state.CartShow);
 
   console.log(products);
-  useEffect(() => {
-    fetch("https://electronic-ecommerce.herokuapp.com/api/v1/product")
-      .then((data) => data.json())
-      .then((data) => {
-        dispatch(fetchProducts(data));
-        console.log(products);
-      });
-  });
   if (products === "") {
     fetch("https://electronic-ecommerce.herokuapp.com/api/v1/product")
       .then((data) => data.json())
@@ -55,10 +46,10 @@ function App() {
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/checkout" element={<CheckOut />} />
           </Routes>
-          <Footer />
           <Notifier />
           {cartShow === true ? <Cart /> : ""}
         </div>
+        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   );
