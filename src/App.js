@@ -49,6 +49,7 @@ function App() {
           <Notifier />
           {cartShow === true ? <Cart /> : ""}
         </div>
+        <Footer />
       </ThemeProvider>
     </BrowserRouter>
   );
