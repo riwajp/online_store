@@ -19,11 +19,10 @@ import { CartToogle } from "../Actions";
 import { useEffect } from "react";
 
 const CheckOut = () => {
-  useEffect(() => dispatch(CartToogle(false)));
   const dispatch = useDispatch();
   var notifications = useSelector((state) => state.Notifiers);
   const navigate = useNavigate();
-
+  const cart = useSelector((state) => state.CartItems);
   const validate = (values) => {
     const errors = {};
     if (!values.name) {
@@ -61,7 +60,11 @@ const CheckOut = () => {
     validate,
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2));
-      var notification = "Orders Placed.";
+      if (cart.length > 0) {
+        var notification = "Orders Placed.";
+      } else {
+        var notification = "No Order Placed.(Cart Empty)";
+      }
       notification = [...notifications, notification];
 
       var cart_new = [];

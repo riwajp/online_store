@@ -13,6 +13,7 @@ import {
   ATCdisabled,
   BNdisabled,
   Date,
+  Added,
 } from "./Styles/ProductPage.styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -26,6 +27,7 @@ import { CartToogle } from "../Actions";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../Actions";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductPage = () => {
   window.scrollTo(0, 0);
@@ -33,7 +35,7 @@ const ProductPage = () => {
   const id = useParams().id;
   console.log(id);
   const all_products = useSelector((state) => state.productsFetch);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -57,14 +59,19 @@ const ProductPage = () => {
   console.log(product);
   var notifications = useSelector((state) => state.Notifiers);
 
-  function add_to_cart() {
+  function add_to_cart(checkout) {
     var notification = product.name + " added to Cart.";
     notification = [...notifications, notification];
 
     dispatch(NotifiersAdd(notification));
-    var cart_new = [...cart, product];
+    var cart_new = [...cart, { product: product, quantity: 1 }];
     dispatch(CartAdd(cart_new));
     dispatch(CartToogle(true));
+
+    if (checkout) {
+      dispatch(CartToogle(false));
+      navigate("../../checkout");
+    }
   }
 
   function tsToDate(ts) {
@@ -121,7 +128,6 @@ const ProductPage = () => {
                 ) : (
                   <OutofStock>Out of Stock</OutofStock>
                 )}
-
                 <Description>
                   <Date>Date Added: {tsToDate(product.createDate)}</Date>
                   <br />
@@ -134,15 +140,19 @@ const ProductPage = () => {
                   {parseInt(product.price.substring(1) * 120).toLocaleString()}
                 </Price>
                 <br />
-                {product.stock > 0 ? (
+                {product.stock > 0 &&
+                cart.filter((x) => x.product === product).length === 0 ? (
                   <div>
-                    <AddToCart onClick={() => add_to_cart()}>
+                    <AddToCart onClick={() => add_to_cart(false)}>
                       Add to Cart
                     </AddToCart>
-                    <Link to="/checkout" style={{ textDecoration: "none" }}>
-                      <BuyNow>Buy Now</BuyNow>
-                    </Link>
+
+                    <BuyNow onClick={() => add_to_cart(true)}>Buy Now</BuyNow>
                   </div>
+                ) : cart.filter((x) => x.product === product).length > 0 ? (
+                  <Added onClick={() => dispatch(CartToogle(true))}>
+                    Added to Cart
+                  </Added>
                 ) : (
                   <div>
                     <ATCdisabled>Add to Cart</ATCdisabled>

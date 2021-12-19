@@ -47,8 +47,9 @@ export const TotalPrice = styled.div`
 `;
 
 export const Delete = styled.img`
-  width: 30px;
+  width: 20px;
   height: auto;
+  cursor: pointer;
 `;
 
 export const Title = styled.div`
@@ -64,7 +65,7 @@ export const CheckOut = styled.button`
   height: 40px;
   margin-top: 50px;
   border: 1px solid royalblue;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   &:hover {
     background-color: lightblue;
@@ -78,4 +79,20 @@ export const Products = styled.div`
   height: 500px;
   max-height: 50vh;
   overflow-y: scroll;
+`;
+
+export const AddBtn = styled.button`
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 15px;
+  background-color: grey;
+  border-radius: 100%;
+  height: 27px;
+  width: 27px;
+  cursor: pointer;
+`;
+
+export const Quantity = styled.span`
+  font-size: 21px;
+  padding: 10px;
 `;

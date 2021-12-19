@@ -98,7 +98,7 @@ export const OutofStock = styled.div`
   max-width: 130px;
 `;
 
-export const ATCdisabled = styled.div`
+export const ATCdisabled = styled.button`
   width: 95%;
   height: 40px;
   display: block;
@@ -108,6 +108,11 @@ export const ATCdisabled = styled.div`
   border: 1px solid #2a2929;
   color: white;
   margin-top: 50px;
+
+  &:hover {
+    transition: 0.3s;
+    background-color: #141414;
+  }
   cursor: not-allowed;
 `;
 
@@ -126,4 +131,17 @@ export const BNdisabled = styled.button`
 
 export const Date = styled.div`
   color: grey;
+`;
+
+export const Added = styled.button`
+  width: 95%;
+  height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #2ecc71;
+  border: 1px solid #2ecc71;
+  color: white;
+  margin-top: 50px;
+  cursor: pointer;
 `;
